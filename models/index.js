@@ -3,9 +3,11 @@ import categorySchema from "./categoryModel.js"
 import userSchema from "./userModel.js";
 import serviceSchema from "./service.js";
 import srvicePriceSchema from "./servicePrice.js";
+import mysql2 from 'mysql2';
 const sequelize = new Sequelize("TestingNode", "root", "123456", {
     host: "localhost",
-    dialect: "mysql"
+    dialect: "mysql",
+    dialectModule: mysql2
 });
 
 sequelize.authenticate().then(() => {
