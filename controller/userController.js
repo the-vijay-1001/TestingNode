@@ -9,7 +9,7 @@ export const signup = async (request, response) => {
         if (userName && email && password) {
             const user = await User.create({ userName, email, password })
             if (user) {
-                return response.status(200).json({ message: "signup success" });
+                return response.status(200).json({ message: "signup success", data: user });
             }
             else {
                 return response.status(400).json({ message: "somthing went wrong" });
@@ -18,6 +18,7 @@ export const signup = async (request, response) => {
         else {
             return response.status(200).json({ message: "All Fields are require" });
         }
+
     } catch (error) {
         return response.status(500).json({ message: "internal server error" })
     }
