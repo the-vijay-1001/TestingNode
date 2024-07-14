@@ -7,11 +7,12 @@ import mysql2 from 'mysql2';
 const sequelize = new Sequelize("TestingNode", "root", "123456", {
     host: "localhost",
     dialect: "mysql",
-    dialectModule: mysql2
+    dialectModule: mysql2,
+    logging:false
 });
 
 sequelize.authenticate().then(() => {
-    console.log("db connected");
+    console.log("database connected");
 }).catch(err => {
     console.log("db not connected " + err)
 });
@@ -34,7 +35,7 @@ db.service_prices.belongsTo(db.services);
 
 
 sequelize.sync({ force: false }).then(res => {
-    console.log("db syncing")
+    console.log("database sync")
 })
 
 export default db;
